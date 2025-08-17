@@ -1,0 +1,81 @@
+{
+  "homebrew": {
+    "install": true,
+    "brewfile_paths": ["./config/Brewfile", "./Brewfile", "~/.config/Brewfile"]
+  },
+  "shell": {
+    "install": true,
+    "required_tools": ["oh-my-posh", "atuin", "zoxide"],
+    "shell_files": [".zshrc", ".zprofile", ".zshenv"],
+    "theme_file": "catpuccin-mocha-mod.omp.json",
+    "init_commands": [
+      ["atuin", "import", "auto"],
+      ["zoxide", "add", "~"]
+    ]
+  },
+  "devtools": {
+    "install": true,
+    "languages": [
+      {
+        "name": "rust",
+        "enabled": true,
+        "commands": [
+          ["rustup", "default", "stable"],
+          ["rustup", "component", "add", "clippy"],
+          ["rustup", "component", "add", "rustfmt"]
+        ]
+      },
+      {
+        "name": "python",
+        "enabled": true,
+        "commands": [
+          ["uv", "python", "install", "3.11"],
+          ["uv", "python", "pin", "3.11"]
+        ]
+      },
+      {
+        "name": "go",
+        "enabled": true,
+        "commands": [
+          ["go", "install", "golang.org/x/tools/cmd/gofmt@latest"],
+          ["go", "install", "golang.org/x/tools/cmd/goimports@latest"]
+        ]
+      },
+      {
+        "name": "node",
+        "enabled": true,
+        "commands": [["npm", "install", "-g", "yarn"]]
+      }
+    ],
+    "global_tools": [],
+    "verify_tools": [
+      "rustc",
+      "cargo",
+      "python3",
+      "node",
+      "npm",
+      "git",
+      "docker",
+      "go"
+    ]
+  },
+  "dotfiles": {
+    "install": true,
+    "mappings": {
+      "nvim": "config/nvim",
+      "yazi": "config/yazi",
+      "gh": "config/gh",
+      "tmuxinator": "config/tmuxinator",
+      ".gitconfig": "config/.gitconfig",
+      ".zprofile": "config/.zprofile",
+      ".zshenv": "config/.zshenv"
+    }
+  },
+  "terminal": {
+    "install": true,
+    "config_files": {
+      "kitty/kitty.conf": "config/kitty/kitty.conf",
+      "tmux/tmux.conf": "config/tmux/tmux.conf"
+    }
+  }
+}
